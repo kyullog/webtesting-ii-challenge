@@ -18,12 +18,16 @@ class Dashboard extends Component {
     }
   };
 
+  ball = () => {
+    this.setState({ balls: this.state.balls + 1 });
+  };
+
   render() {
     return (
       <>
         <>
           <button onClick={this.strike}>Strike</button>
-          <button>Ball</button>
+          <button onClick={this.ball}>Ball</button>
           <button>Foul</button>
           <button>Hit</button>
         </>
