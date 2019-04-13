@@ -41,13 +41,14 @@ describe("The Dashboard component", () => {
     it("should reset count when 4 balls is reached", () => {
       const { getByText } = render(<Dashboard />);
       const ballButton = getByText("Ball");
-      fireEvent.click(ballButton);
-      fireEvent.click(ballButton);
-      fireEvent.click(ballButton);
-      fireEvent.click(ballButton);
-      fireEvent.click(ballButton);
-      fireEvent.click(ballButton);
+      const strikeButton = getByText("Strike");
+      fireEvent.click(strikeButton);
+      getByText("1");
+      for (let i = 1; i <= 6; i++) {
+        fireEvent.click(ballButton);
+      }
       getByText("2");
+      getByText("0");
       cleanup();
     });
   });
