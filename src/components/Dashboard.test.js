@@ -52,4 +52,19 @@ describe("The Dashboard component", () => {
       cleanup();
     });
   });
+  describe("the hit button", () => {
+    it("should reset the count when pressed", () => {
+      const { getByText } = render(<Dashboard />);
+      const strike = getByText("Strike");
+      const ball = getByText("Ball");
+      const hit = getByText("Hit");
+      fireEvent.click(strike);
+      getByText("1");
+      fireEvent.click(ball);
+      fireEvent.click(ball);
+      getByText("2");
+      fireEvent.click(hit);
+      getByText("0");
+    });
+  });
 });
