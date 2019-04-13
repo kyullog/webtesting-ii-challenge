@@ -19,7 +19,11 @@ class Dashboard extends Component {
   };
 
   ball = () => {
-    this.setState({ balls: this.state.balls + 1 });
+    if (this.state.balls === 3) {
+      this.setState({ balls: 0, strikes: 0 });
+    } else {
+      this.setState({ balls: this.state.balls + 1 });
+    }
   };
 
   render() {
