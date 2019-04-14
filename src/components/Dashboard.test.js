@@ -54,17 +54,19 @@ describe("The Dashboard component", () => {
   });
   describe("the hit button", () => {
     it("should reset the count when pressed", () => {
-      const { getByText } = render(<Dashboard />);
+      const { getByText, getByTestId } = render(<Dashboard />);
       const strike = getByText("Strike");
       const ball = getByText("Ball");
       const hit = getByText("Hit");
       fireEvent.click(strike);
-      getByText("1");
+      const ballDisp = getByTestId("balls-display");
+      const strikesDisp = getByTestId("strikes-display");
+      expect(strikesDisp.textContent).toEqual("1");
       fireEvent.click(ball);
       fireEvent.click(ball);
-      getByText("2");
+      expect(ballDisp.textContent).toEqual("2");
       fireEvent.click(hit);
-      getByText("0");
+      expect(strikesDisp.textContent && ballDisp.textContent).toEqual("0");
     });
   });
 });
