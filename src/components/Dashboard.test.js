@@ -67,6 +67,21 @@ describe("The Dashboard component", () => {
       expect(ballDisp.textContent).toEqual("2");
       fireEvent.click(hit);
       expect(strikesDisp.textContent && ballDisp.textContent).toEqual("0");
+      cleanup();
+    });
+  });
+  describe("the foul button", () => {
+    it("should should add stikes if there are 0 or 1 strike", () => {
+      const { getByTestId, getByText } = render(<Dashboard />);
+      const foul = getByText("Foul");
+      const strikeDisp = getByTestId("strikes-display");
+      expect(strikeDisp.textContent).toEqual("0");
+      fireEvent.click(foul);
+      expect(strikeDisp.textContent).toEqual("1");
+      fireEvent.click(foul);
+      expect(strikeDisp.textContent).toEqual("2");
+      fireEvent.click(foul);
+      expect(strikeDisp.textContent).toEqual("2");
     });
   });
 });

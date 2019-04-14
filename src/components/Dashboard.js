@@ -30,13 +30,19 @@ class Dashboard extends Component {
     this.setState({ strikes: 0, balls: 0 });
   };
 
+  foul = () => {
+    if (this.state.strikes <= 1) {
+      this.setState({ strikes: this.state.strikes + 1 });
+    } else return;
+  };
+
   render() {
     return (
       <>
         <>
           <button onClick={this.strike}>Strike</button>
           <button onClick={this.ball}>Ball</button>
-          <button>Foul</button>
+          <button onClick={this.foul}>Foul</button>
           <button onClick={this.hit}>Hit</button>
         </>
         <Display strikes={this.state.strikes} balls={this.state.balls} />
