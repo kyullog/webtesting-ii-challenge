@@ -7,11 +7,11 @@ const Display = props => {
       <div className="wrapper">
         <>
           <h3>Balls</h3>
-          <p>{props.balls}</p>
+          <p data-testid="balls-display">{props.balls}</p>
         </>
         <>
           <h3>Strikes</h3>
-          <p>{props.strikes}</p>
+          <p data-testid="strikes-display">{props.strikes}</p>
         </>
       </div>
     </>
